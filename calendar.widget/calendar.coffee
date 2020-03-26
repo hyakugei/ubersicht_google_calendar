@@ -158,7 +158,7 @@ update: (output, domEl)->
                      
   sortArrForDisplay=(arr)->    
     trimmedArr= _.map(arr,(innerArr)-> _.map(innerArr, (item)-> item.trim()))        
-    sortedArrAllDayLast=_.sortBy(trimmedArr, (item)-> item)
+    sortedArrAllDayLast=_.sortBy(trimmedArr, (item)-> parseInt(item[0].split(":")[0]) || 0)
     sortedArrGroupedTwoItems=_.chain(sortedArrAllDayLast)
                               .partition((item)-> _.contains(item, "All Day"))
                               .value()          
